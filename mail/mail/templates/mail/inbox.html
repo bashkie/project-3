@@ -1,0 +1,56 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h2>{{ request.user.email }}</h2>
+
+    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <hr>
+
+    <div id="emails-view">
+        <div id="mailbox-name">
+        </div>
+        <div id="mailbox-contents">
+        </div>
+    </div>
+    
+    
+    <div id="compose-view">
+        <h3>New Email</h3>
+        <form id="compose-form">
+            <div class="form-group">
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+                To: <input id="compose-recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <input type="submit" class="btn btn-primary"/>
+        </form>
+    </div>
+
+    <div id="message-view">
+        <div id="message-contents">
+            <h2 id="message-subject"></h2>
+            <p class="message-details" id="message-timestamp"></p>
+            <p class="message-details"><b>From:</b> <span id="message-sender"></span></p>
+            <p class="message-details"><b>To:</b> <span id="message-recipients"></span></p>
+            <hr>
+            <p id="message-body"></p>
+        </div>
+        <button class="btn btn-sm btn-outline-secondary utility-button" id="archive">Archive</button>
+        <button class="btn btn-sm btn-outline-secondary utility-button" id="unarchive">Unarchive</button>
+        <button class="btn btn-sm btn-outline-primary utility-button" id="reply">Reply</button>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}

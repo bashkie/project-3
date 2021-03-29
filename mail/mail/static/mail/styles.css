@@ -1,0 +1,39 @@
+textarea {
+    min-height: 400px;
+}
+
+.btn {
+	margin: 5px 0;
+}
+
+.utility-button {
+	display: none;
+}
+
+#message-contents {
+	border: solid black 2px;
+	padding: 20px;
+}
+
+div.mailbox-entry {
+	padding: 10px;
+	margin: 10px 0;
+	border: solid black 1px;
+}
+
+div.mailbox-entry:hover {
+	cursor: pointer;
+}
+
+div.read {
+	background-color: #D3D3D3;
+}
+
+div.unread {
+	background-color: #FFF;
+}
+
+p.message-details {
+	margin-bottom: 0.25rem;
+	font-size: 13px;
+}
